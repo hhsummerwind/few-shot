@@ -15,6 +15,8 @@ import zipfile
 import shutil
 import os
 
+import sys
+sys.path.append('/projects/open_sources/classify/few-shot')
 from config import DATA_PATH
 from few_shot.utils import mkdir, rmdir
 

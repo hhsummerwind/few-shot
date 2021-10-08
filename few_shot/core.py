@@ -6,6 +6,7 @@ import torch
 from few_shot.metrics import categorical_accuracy
 from few_shot.callbacks import Callback
 
+import pdb
 
 class NShotTaskSampler(Sampler):
     def __init__(self,
@@ -170,6 +171,7 @@ def prepare_nshot_task(n: int, k: int, q: int) -> Callable:
 
         TODO: Move to arbitrary device
         """
+        # pdb.set_trace()
         x, y = batch
         x = x.double().cuda()
         # Create dummy 0-(num_classes - 1) label

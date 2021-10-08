@@ -3,8 +3,13 @@ import unittest
 import torch
 from torch.utils.data import DataLoader
 
+import sys
+
+sys.path.append('/projects/open_sources/classify/few-shot')
 from few_shot.core import create_nshot_task_label, NShotTaskSampler
 from few_shot.datasets import DummyDataset
+
+import pdb
 
 
 class TestNShotLabel(unittest.TestCase):
@@ -25,7 +30,7 @@ class TestNShotSampler(unittest.TestCase):
         n, k, q = 2, 4, 3
         n_shot_taskloader = DataLoader(self.dataset,
                                        batch_sampler=NShotTaskSampler(self.dataset, 100, n, k, q))
-
+        pdb.set_trace()
         # Load a single n-shot task and check it's properties
         for x, y in n_shot_taskloader:
             support = x[:n*k]
@@ -70,3 +75,10 @@ class TestNShotSampler(unittest.TestCase):
             )
 
             break
+
+
+if __name__ == '__main__':
+    # TestNShotLabel().test_label()
+    sample = TestNShotSampler()
+    sample.setUpClass()
+    sample.test_n_shot_sampler()

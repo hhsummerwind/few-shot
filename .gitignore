@@ -105,3 +105,8 @@ venv.bak/
 
 # Pycharm
 .idea/
+
+*.csv
+*.jpg
+logs/
+models/
