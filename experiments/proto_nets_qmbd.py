@@ -116,7 +116,7 @@ class alignCollate(object):
         out_images = [transform(image, self.padding_value) for image in new_images]
         images = torch.cat([t.unsqueeze(0) for t in out_images], 0)
         labels = torch.tensor(new_labels)
-        print(images.shape, labels.shape)
+        # print(images.shape, labels.shape)
         return [images, labels]
 
 
