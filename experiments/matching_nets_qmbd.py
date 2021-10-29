@@ -4,6 +4,8 @@ Reproduce Matching Network results of Vinyals et al
 import argparse
 from torch.utils.data import DataLoader
 from torch.optim import Adam
+import sys
+sys.path.append('/projects/open_sources/classify/few-shot')
 
 from few_shot.datasets import OmniglotDataset, MiniImageNet, QMBDDataset
 from few_shot.core import NShotTaskSampler, prepare_nshot_task, EvaluateFewShot
@@ -27,13 +29,13 @@ torch.backends.cudnn.benchmark = True
 ##############
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', default='qmbd')
-parser.add_argument('--fce', default=False, type=lambda x: x.lower()[0] == 't')  # Quick hack to extract boolean
+parser.add_argument('--fce', default=True, type=lambda x: x.lower()[0] == 't')  # Quick hack to extract boolean
 parser.add_argument('--distance', default='cosine')
 parser.add_argument('--n-train', default=1, type=int)
 parser.add_argument('--n-test', default=1, type=int)
 parser.add_argument('--k-train', default=5, type=int)
 parser.add_argument('--k-test', default=2, type=int)
-parser.add_argument('--q-train', default=5, type=int)
+parser.add_argument('--q-train', default=1, type=int)
 parser.add_argument('--q-test', default=1, type=int)
 parser.add_argument('--lstm-layers', default=1, type=int)
 parser.add_argument('--unrolling-steps', default=2, type=int)
