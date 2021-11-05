@@ -86,14 +86,14 @@ background = dataset_class('background')
 background_taskloader = DataLoader(
     background,
     batch_sampler=NShotTaskSampler(background, episodes_per_epoch, args.n_train, args.k_train, args.q_train),
-    num_workers=4,
+    num_workers=2,
     collate_fn=alignCollate(imgH=28, imgW=28, padding_value=255)
 )
 evaluation = dataset_class('evaluation')
 evaluation_taskloader = DataLoader(
     evaluation,
     batch_sampler=NShotTaskSampler(evaluation, episodes_per_epoch, args.n_test, args.k_test, args.q_test),
-    num_workers=4,
+    num_workers=2,
     collate_fn=alignCollate(imgH=28, imgW=28, padding_value=255)
 )
 
